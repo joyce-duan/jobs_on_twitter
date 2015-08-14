@@ -10,4 +10,4 @@ Data insights about job openings on twitter:
     - Austin has many engineering openings  
     - Houston many medical related openings  
 
-for more information, see [jobs_on_twitter presentation.](https://docs.google.com/presentation/d/1HVnnZ0o8BfInAHQPa3eRLoRwFpeD9fDvxT755Vru8Sk/edit#slide=id.p)
+for more information, see [jobs_on_twitter presentation.](https://docs.google.com/presentation/d/1HVnnZ0o8BfInAHQPa3eRLoRwFpeD9fDvxT755Vru8Sk/edit?usp=sharing)
