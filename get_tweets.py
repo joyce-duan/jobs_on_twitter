@@ -39,11 +39,7 @@ class StdOutListener(StreamListener):
         self.time = start_time
         self.limit = time_limit
         self.step = 600
-        #self.hr_last = -1.0
-        #self.hr_max = hr_max
         self.cnt  = 0
-
-        #self.new_run = 1
 
         if self.flag_test:
             self.hr_max = 61
@@ -52,7 +48,6 @@ class StdOutListener(StreamListener):
     def on_data(self, data):
         while (time.time() - self.time) < self.limit:
             try:
-            #if 1 == 1:
                 data = data.strip()
                 if len(data)> 20:
                     self.dump_user_tweet(json.loads(data))
@@ -63,9 +58,7 @@ class StdOutListener(StreamListener):
                 return True
             except:
                 time.sleep(5)
-                pass
-
-            #return True                
+                pass             
             
         self.fh_out_u.close()
         self.fh_out_t.close()

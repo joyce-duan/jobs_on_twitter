@@ -62,7 +62,6 @@ def grid_search_rfc(txt_lst, y):
 	, ('clf', RandomForestClassifier(n_estimators=100))
 	])
 
-	# specify parameters and distributions to sample from
 	param_grid = { 
 					'vect__ngram_range':[None, (1, 2), (1,3),(1,4)],
 			   		"clf__max_depth": np.arange(3,30,5),
@@ -84,7 +83,6 @@ def grid_search_rfc(txt_lst, y):
 
 def randomized_search_rfc(txt_lst, y):
 	# build a classifier
-	#clf = RandomForestClassifier(n_estimators=100)
 	pipeline = Pipeline([
 	('vect', CountVectorizer(stop_words='english', analyzer = analyzer, ngram_range=(1, 3)))
 	,('tfidf', TfidfTransformer())
@@ -165,13 +163,11 @@ def plot_roc_cv(classifier, X, y, n_folds, cv):
         plt.plot(fpr, tpr, lw=1, label='ROC fold %d (area = %0.2f)' % (i, roc_auc))
 
     plt.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6), label='Luck')
-
     mean_tpr /= len(cv)
     mean_tpr[-1] = 1.0
     mean_auc = auc(mean_fpr, mean_tpr)
     plt.plot(mean_fpr, mean_tpr, 'k--',
              label='Mean ROC (area = %0.2f)' % mean_auc, lw=2)
-
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.xlabel('False Positive Rate')

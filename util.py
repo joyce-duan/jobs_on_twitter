@@ -110,9 +110,7 @@ def pre_process_tweets(df_tweets):
 	return df_tweets
 
 def get_data_for_labeling():
-	#df_users, df_tweets = read_user_tweets()
 	df_users, df_tweets = read_user_tweets(fname_u ='users.json', fname_t = 'tweets.json' )
-
 	df_tweets = pre_process_tweets(df_tweets)
 	cond_rt = df_tweets.is_rt 
 	df_tweets = df_tweets[~cond_rt]
@@ -131,8 +129,6 @@ def get_data_for_labeling():
 				fh_out.write('\t'.join(['',str_cleaned, df_tweets.iloc[x].created_by, df_tweets.iloc[x].urls]))
 				fh_out.write('\n')
 	fh_out.close()
-
-
 
 def get_quality_tweets(df_tweets):
 	df_tweets['str_text'] = df_tweets['str_text'].apply(lambda x: ' '.join([e.lower() \
@@ -163,7 +159,6 @@ def get_val_w_high_cnts(df_tweets, col_name):
     print 'count by %s mean %.3f std %.3f cut_off %.3f' % (col_name, np.mean(grp), np.std(grp), cnt_max)
     lst_values_to_exclude = grp[grp>cnt_max].index.values
     return grp[grp>cnt_max].sort(ascending = False, inplace=False)
-
 
 def read_labeled_data():
 	n_rows = 1500
